@@ -72,6 +72,7 @@ export interface Config {
     navlinks: Navlink;
     authors: Author;
     books: Book;
+    genres: Genre;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     navlinks: NavlinksSelect<false> | NavlinksSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
     books: BooksSelect<false> | BooksSelect<true>;
+    genres: GenresSelect<false> | GenresSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -219,6 +221,21 @@ export interface Book {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "genres".
+ */
+export interface Genre {
+  id: number;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -260,6 +277,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'books';
         value: number | Book;
+      } | null)
+    | ({
+        relationTo: 'genres';
+        value: number | Genre;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -376,6 +397,17 @@ export interface BooksSelect<T extends boolean = true> {
   title?: T;
   synopsis?: T;
   author?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "genres_select".
+ */
+export interface GenresSelect<T extends boolean = true> {
+  title?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;

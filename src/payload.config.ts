@@ -11,6 +11,7 @@ import { Media } from './collections/Media';
 import { Navlinks } from './collections/Navlinks';
 import { Authors } from './collections/Authors';
 import { Books } from './collections/Books';
+import { Genres } from './collections/Genres';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -28,6 +29,7 @@ const collections: CollectionConfig[] = [
   Navlinks,
   Authors,
   Books,
+  Genres,
 ];
 
 /**
