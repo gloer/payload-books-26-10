@@ -2,7 +2,7 @@
 
 ##Dette er en modifisert versjon av versjonen til Vegar
 
-`npx degit gloer/payload-modified-starter`
+`npx degit github.com/gloer/payload-books-26-10`
 
 
 Dette repositoryet inneholder en tilpasset variant av Payload sin starter-template, spesifikt ment for å brukes til å lage en Docker-container som kan kjøres. 
